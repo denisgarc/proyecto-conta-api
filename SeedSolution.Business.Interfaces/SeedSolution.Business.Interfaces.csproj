@@ -47,8 +47,6 @@
     <Compile Include="Inventory\IColorBL.cs" />
     <Compile Include="Inventory\IOperationBL.cs" />
     <Compile Include="Inventory\IProductBL.cs" />
-    <Compile Include="Inventory\IUserMaintBL.cs" />
-    <Compile Include="Inventory\IUserPaymentBL.cs" />
     <Compile Include="Log\ISysLogBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityAccess\ISecurityAccesBL.cs" />

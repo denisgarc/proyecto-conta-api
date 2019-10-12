@@ -54,11 +54,9 @@
     <Compile Include="DTO\ResponseService.cs" />
     <Compile Include="DTO\UserClaims.cs" />
     <Compile Include="Inventory\Cardex.cs" />
-    <Compile Include="Inventory\Client.cs" />
     <Compile Include="Inventory\Color.cs" />
     <Compile Include="Inventory\Marca.cs" />
     <Compile Include="Inventory\Operacion.cs" />
-    <Compile Include="Inventory\Payment.cs" />
     <Compile Include="Inventory\Producto.cs" />
     <Compile Include="Inventory\Sucursal.cs" />
     <Compile Include="Log\SysLog.cs" />

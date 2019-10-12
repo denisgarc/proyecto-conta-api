@@ -50,7 +50,6 @@
     <Compile Include="Inventory\BrandBL.cs" />
     <Compile Include="Inventory\CardexBL.cs" />
     <Compile Include="Inventory\ColorBL.cs" />
-    <Compile Include="Inventory\DummyBL.cs" />
     <Compile Include="Inventory\OperationBL.cs" />
     <Compile Include="Inventory\ProductBL.cs" />
     <Compile Include="Log\SysLogBL.cs" />

@@ -137,7 +137,6 @@
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CardexController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
-    <Compile Include="Controllers\InventoryController2.cs" />
     <Compile Include="Controllers\OperationController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SecurityAcces\SecurityAccesController.cs" />

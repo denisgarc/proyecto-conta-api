@@ -47,8 +47,6 @@
     <Compile Include="Inventory\IColorRepository.cs" />
     <Compile Include="Inventory\IOperationRepository.cs" />
     <Compile Include="Inventory\IProductRepository.cs" />
-    <Compile Include="Inventory\IUserMaint.cs" />
-    <Compile Include="Inventory\IUserPayment.cs" />
     <Compile Include="Log\ISysLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityAcces\ISysUser.cs" />

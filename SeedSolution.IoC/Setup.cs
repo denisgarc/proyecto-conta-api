@@ -28,10 +28,6 @@ namespace SeedSolution.IoC
                 x.For<IConnectionTools>().Use<MSSQLTools>();
                 x.For<ISysUser>().Use<SysUserDB>();
                 x.For<ISecurityAccesBL>().Use<SecurtiyAccesBL>();
-                //x.For<IUserMaint>().Use<UserMaint>();
-                //x.For<IUserPayment>().Use<UserPayment>();
-                //x.For<IUserMaintBL>().Use<DummyBL>();
-                //x.For<IUserPaymentBL>().Use<DummyBL>();
 
                 // Repositorios
                 x.For<IBranchRepository>().Use<BranchRepository>();
