@@ -41,7 +41,7 @@ namespace SeedSolution.Business.Inventory
                                     Codigo = prod.Codigo,
                                     Marca = new Marca()
                                     {
-                                        Codigo = prod.Codigo,
+                                        Codigo = prod.CodMarca,
                                         Nombre = prod.NombreMarca,
                                         Estado = true
                                     },

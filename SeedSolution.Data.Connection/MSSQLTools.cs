@@ -106,12 +106,13 @@ namespace SeedSolution.Data.Connection
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
                 resp = true;
+                blnStatus = true;
             }
             catch (Exception ex)
             {
                 strError = Geterror(ex);
                 resp = false;
-
+                blnStatus = false;
             }
             finally
             {
@@ -264,11 +265,13 @@ namespace SeedSolution.Data.Connection
                 AddTimeout(cmd);
                 cmd.ExecuteNonQuery();
                 resp = true;
+                blnStatus = true;
             }
             catch (Exception ex)
             {
                 strError = Geterror(ex);
                 resp = false;
+                blnStatus = false;
             }
             finally
             {

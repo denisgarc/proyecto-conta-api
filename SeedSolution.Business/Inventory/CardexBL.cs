@@ -14,6 +14,9 @@ namespace SeedSolution.Business.Inventory
         #region Private Variables
 
         private readonly ICardexRepository _cardexRepository;
+        private readonly IBranchRepository _branchRepository;
+        private readonly IOperationRepository _operationRepository;
+        private readonly IProductBL _productRepository;
 
         #endregion
 
@@ -22,6 +25,9 @@ namespace SeedSolution.Business.Inventory
         public CardexBL()
         {
             this._cardexRepository = StructureMap.ObjectFactory.GetInstance<ICardexRepository>();
+            this._branchRepository = StructureMap.ObjectFactory.GetInstance<IBranchRepository>();
+            this._operationRepository = StructureMap.ObjectFactory.GetInstance<IOperationRepository>();
+            this._productRepository = StructureMap.ObjectFactory.GetInstance<IProductBL>();
         }
 
         #endregion
@@ -31,7 +37,23 @@ namespace SeedSolution.Business.Inventory
         {
             try
             {
-                return this._cardexRepository.GetCardex(id);
+                var cardex = this._cardexRepository.GetCardex(id);
+                var branch = this._branchRepository.GetBranch();
+                var operation = this._operationRepository.GetOperation();
+
+                var response = (from t in cardex
+                                select new Cardex()
+                                {
+                                    Id = t.Id,
+                                    Sucursal = branch.Where(x => x.Codigo == t.CodSucursal).FirstOrDefault(),
+                                    Operacion = operation.Where(x => x.Codigo == t.CodOperacion).FirstOrDefault(),
+                                    Producto = this._productRepository.GetProduct(t.CodProducto).FirstOrDefault(),
+                                    FechaOperacion = t.FechaOperacion,
+                                    Cantidad = t.Cantidad,
+                                    Descripcion = t.Descripcion
+                                }).ToList();
+
+                return response;
             }
             catch (Exception ex)
             {

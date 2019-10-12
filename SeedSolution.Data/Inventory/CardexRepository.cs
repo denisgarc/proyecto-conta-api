@@ -1,6 +1,7 @@
 ﻿using SeedSolution.Data.Connection.Interfaces;
 using SeedSolution.Data.Interfaces.Inventory;
 using SeedSolution.Data.Tools;
+using SeedSolution.Entity.DB;
 using SeedSolution.Entity.Inventory;
 using System;
 using System.Collections.Generic;
@@ -30,19 +31,14 @@ namespace SeedSolution.Data.Inventory
 
         #region Public Methods
 
-        public List<Cardex> GetCardex(int? id = null)
+        public List<CardexDB> GetCardex(int? id = null)
         {
             try
             {
                 using (var cmd = new SqlCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "cat_obtener_catalogos";
-
-                    cmd.Parameters.Add("@type", SqlDbType.Int).Value = 6;
-
-                    if (id != null)
-                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    cmd.CommandText = "car_obtener_cardex";
 
                     // Realizamos la consulta de datos
                     var result = this._dbConnector.Getds(cmd).Tables[0];
@@ -51,7 +47,7 @@ namespace SeedSolution.Data.Inventory
                     if (!this._dbConnector.Status())
                         throw new Exception(this._dbConnector.Error());
 
-                    var response = result.ToSerializeList<Cardex>();
+                    var response = result.ToSerializeList<CardexDB>();
 
                     return response;
                 }

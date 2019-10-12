@@ -1,4 +1,5 @@
-﻿using SeedSolution.Entity.Inventory;
+﻿using SeedSolution.Entity.DB;
+using SeedSolution.Entity.Inventory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SeedSolution.Data.Interfaces.Inventory
 {
     public interface ICardexRepository
     {
-        List<Cardex> GetCardex(int? id = null);
+        List<CardexDB> GetCardex(int? id = null);
         void SaveCardex(Cardex cardex);
     }
 }

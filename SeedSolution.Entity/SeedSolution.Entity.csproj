@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\CardexDB.cs" />
     <Compile Include="DB\ProductoDB.cs" />
     <Compile Include="DTO\ResponseService.cs" />
     <Compile Include="DTO\UserClaims.cs" />
