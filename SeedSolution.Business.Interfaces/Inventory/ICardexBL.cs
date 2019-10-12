@@ -10,6 +10,7 @@ namespace SeedSolution.Business.Interfaces.Inventory
     public interface ICardexBL
     {
         List<Cardex> GetCardex(int? id = null);
+        List<Cardex> GetCardexFiltered(DateTime startDate, DateTime finishDate, int? branch = null, int? product = null);
         void SaveCardex(Cardex cardex);
     }
 }

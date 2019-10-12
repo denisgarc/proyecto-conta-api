@@ -40,6 +40,47 @@ namespace SeedSolution.Data.Inventory
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "car_obtener_cardex";
 
+                    // Agregamos los parametros
+                    cmd.Parameters.Add("@reporte", SqlDbType.Bit).Value = false;
+
+                    // Realizamos la consulta de datos
+                    var result = this._dbConnector.Getds(cmd).Tables[0];
+
+                    // Validamos si existe error al consultar datos
+                    if (!this._dbConnector.Status())
+                        throw new Exception(this._dbConnector.Error());
+
+                    var response = result.ToSerializeList<CardexDB>();
+
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<CardexDB> GetCardexFiltered(DateTime startDate, DateTime finishDate, int? branch = null, int? product = null)
+        {
+            try
+            {
+                using (var cmd = new SqlCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "car_obtener_cardex";
+
+                    // Agregamos los parametros
+                    cmd.Parameters.Add("@reporte", SqlDbType.Bit).Value = true;
+                    cmd.Parameters.Add("@fecha_desde", SqlDbType.DateTime).Value = startDate;
+                    cmd.Parameters.Add("@fecha_hasta", SqlDbType.DateTime).Value = finishDate;
+
+                    if (branch != null)
+                        cmd.Parameters.Add("@cod_sucursal", SqlDbType.SmallInt).Value = branch;
+
+                    if (product != null)
+                        cmd.Parameters.Add("@cod_producto", SqlDbType.Int).Value = product;
+
                     // Realizamos la consulta de datos
                     var result = this._dbConnector.Getds(cmd).Tables[0];
 

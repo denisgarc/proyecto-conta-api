@@ -49,6 +49,25 @@ namespace SeedSolution.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/cardex/filter")]
+        public async Task<IHttpActionResult> GetFiltered(DateTime startDate, DateTime finishDate, int? branch = null, int? product = null)
+        {
+            try
+            {
+                var result = await Task.Run(() =>
+                {
+                    return this._cardexBL.GetCardexFiltered(startDate, finishDate, branch, product);
+                });
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
         [HttpPost]
         [Route("api/cardex")]
         public async Task<IHttpActionResult> Save(Cardex cardex)

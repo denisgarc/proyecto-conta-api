@@ -61,6 +61,31 @@ namespace SeedSolution.Business.Inventory
             }
         }
 
+        public List<Cardex> GetCardexFiltered(DateTime startDate, DateTime finishDate, int? branch = null, int? product = null)
+        {
+            try
+            {
+                var cardex = this._cardexRepository.GetCardexFiltered(startDate, finishDate, branch, product);
+                var branchList = this._branchRepository.GetBranch();
+
+                var response = (from t in cardex
+                                select new Cardex()
+                                {
+                                    Id = t.Id,
+                                    Sucursal = branchList.Where(x => x.Codigo == t.CodSucursal).FirstOrDefault(),
+                                    Producto = this._productRepository.GetProduct(t.CodProducto).FirstOrDefault(),
+                                    Cantidad = t.Cantidad,
+                                    Descripcion = t.Descripcion
+                                }).ToList();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void SaveCardex(Cardex cardex)
         {
             try
