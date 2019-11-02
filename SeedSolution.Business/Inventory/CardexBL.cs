@@ -17,6 +17,8 @@ namespace SeedSolution.Business.Inventory
         private readonly IBranchRepository _branchRepository;
         private readonly IOperationRepository _operationRepository;
         private readonly IProductBL _productRepository;
+        public string msgError;
+        public bool status;
 
         #endregion
 
@@ -91,6 +93,8 @@ namespace SeedSolution.Business.Inventory
             try
             {
                 this._cardexRepository.SaveCardex(cardex);
+                this.status = this._cardexRepository.GetStatus();
+                this.msgError = this._cardexRepository.GetError();
             }
             catch (Exception ex)
             {
@@ -99,5 +103,15 @@ namespace SeedSolution.Business.Inventory
         }
 
         #endregion
+
+        public string GetError()
+        {
+            return this.msgError;
+        }
+
+        public bool GetStatus()
+        {
+            return this.status;
+        }
     }
 }

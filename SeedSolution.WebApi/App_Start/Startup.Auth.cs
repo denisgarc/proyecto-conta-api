@@ -17,7 +17,7 @@ namespace SeedSolution.WebApi
         {
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/token"),
+                TokenEndpointPath = new PathString("/api/token"),
                 Provider = new OAuthAppProvider(),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
                 AllowInsecureHttp = true

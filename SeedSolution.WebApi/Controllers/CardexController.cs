@@ -79,6 +79,9 @@ namespace SeedSolution.WebApi.Controllers
                     this._cardexBL.SaveCardex(cardex);
                 });
 
+                if(!this._cardexBL.GetStatus())
+                    return Ok(this._cardexBL.GetError());
+
                 return Ok();
             }
             catch (Exception ex)

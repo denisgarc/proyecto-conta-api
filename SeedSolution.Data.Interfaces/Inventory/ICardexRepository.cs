@@ -13,5 +13,7 @@ namespace SeedSolution.Data.Interfaces.Inventory
         List<CardexDB> GetCardex(int? id = null);
         List<CardexDB> GetCardexFiltered(DateTime startDate, DateTime finishDate, int? branch = null, int? product = null);
         void SaveCardex(Cardex cardex);
+        string GetError();
+        bool GetStatus();
     }
 }

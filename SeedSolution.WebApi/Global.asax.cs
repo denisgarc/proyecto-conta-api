@@ -15,6 +15,7 @@ namespace SeedSolution.WebApi
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             Setup.ConfigureIoC(MoreIoCConfigurations);
+            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
         }
         private void MoreIoCConfigurations(ConfigurationExpression x)
         {

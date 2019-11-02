@@ -18,6 +18,8 @@ namespace SeedSolution.Data.Inventory
         #region Private Variables
 
         private readonly IConnectionTools _dbConnector;
+        public string msgError;
+        public bool status;
 
         #endregion
 
@@ -121,8 +123,10 @@ namespace SeedSolution.Data.Inventory
                     this._dbConnector.Exec(cmd);
 
                     // Validamos si existe error al consultar datos
-                    if (!this._dbConnector.Status())
-                        throw new Exception(this._dbConnector.Error());
+                    //if (!this._dbConnector.Status())
+                    //    throw new Exception(this._dbConnector.Error());
+                    this.status = this._dbConnector.Status();
+                    this.msgError = this._dbConnector.Error();
                 }
             }
             catch (Exception ex)
@@ -132,5 +136,15 @@ namespace SeedSolution.Data.Inventory
         }
 
         #endregion
+
+        public string GetError()
+        {
+            return this.msgError;
+        }
+
+        public bool GetStatus()
+        {
+            return this.status;
+        }
     }
 }
